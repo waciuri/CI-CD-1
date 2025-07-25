@@ -9,10 +9,10 @@
 
 ## 🎓 Join Our DevOps Training Program!
 
-**Batch 06 - Professional Certification in:**  
-**Jenkins | Docker | Kubernetes | Terraform | AWS**
+**Batch 06 - JDK Training:**  
+**Jenkins | Docker | Kubernetes | Terraform on AWS**
 
-📅 **Starting Soon** | 🕒 8 Weeks Intensive Training | 👨‍💻 Hands-on Projects
+📅 **From August 07** | 🕒 8 Weeks Intensive Training | 👨‍💻 Hands-on Projects
 
 ✨ **What You'll Learn:**
 - ✅ End-to-end CI/CD pipeline implementation
@@ -22,9 +22,9 @@
 - ✅ Monitoring with Prometheus & Grafana
 - ✅ GitOps with ArgoCD
 
-🔹 **Limited Seats Available!**  
-🔹 **Special Early Bird Pricing**  
-🔹 **Placement Assistance**
+🔹 **10+ Real-time Projects**  
+🔹 **One-One Mock Interview Sessions**  
+🔹 **Resume Guidance**
 
 📌 **Register Now:**  
 [![Register Button](https://img.shields.io/badge/REGISTER_NOW-%23007EC6.svg?style=for-the-badge&logo=google-forms&logoColor=white)](https://forms.gle/rr7CKbG7Wu4Zdoit7)
