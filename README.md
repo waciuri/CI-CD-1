@@ -1,128 +1,45 @@
-# Learn With KASTRO - Kubernetes Deployment
+# � Deployment of Microservices Application using Ingress Controller
 
-This project contains a multi-page web application deployed on AWS EKS with Nginx Ingress Controller using Jenkins CI/CD pipeline.
+### by Kastro Kiran V
 
-## Application Paths
+![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-The application provides the following paths:
+This project contains a multi-page web application deployed on **AWS EKS** with **Ingress Controller** using **Jenkins CI/CD** pipeline.
 
-- **Home Page**: `/` - Landing page with overview
-- **About Page**: `/about` - Company information and team
-- **Services Page**: `/services` - Detailed service offerings
-- **Contact Page**: `/contact` - Contact information and form
+## 🛠️ Tools Used
 
-## Prerequisites
+| Category        | Tools                                                                                      |
+|-----------------|-------------------------------------------------------------------------------------------|
+| Version Control | ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=flat&logo=github&logoColor=white) |
+| CI/CD           | ![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=flat&logo=jenkins&logoColor=white) |
+| Containers      | ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white) |
+| Orchestration   | ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=flat&logo=kubernetes&logoColor=white) ![AWS EKS](https://img.shields.io/badge/AWS_EKS-%23FF9900.svg?style=flat&logo=amazon-aws&logoColor=white) |
+| Monitoring      | ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=Prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=flat&logo=grafana&logoColor=white) |
+| GitOps          | ![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=flat&logo=argo&logoColor=white) |
+| Package Manager | ![Helm](https://img.shields.io/badge/Helm-0F1689?style=flat&logo=helm&logoColor=white) |
 
-### Jenkins Configuration
+## 🌐 Application Paths
 
-1. **DockerHub Credentials** (`dockerhub-creds`):
-   - Username: Your DockerHub username
-   - Password: Your DockerHub password/token
+The application provides the following endpoints:
 
-2. **AWS Credentials** (`aws-creds`):
-   - Access Key ID: Your AWS access key
-   - Secret Access Key: Your AWS secret key
+| Path          | Description                          |
+|---------------|--------------------------------------|
+| `/`           | 🏠 Landing page with overview        |
+| `/about`      | ℹ️ Company information and team      |
+| `/services`   | 🛠️ Detailed service offerings        |
+| `/contact`    | 📧 Contact information and form      |
 
-### AWS EKS Cluster
+## 🔄 Pipeline Stages
 
-- **Cluster Name**: `kastro-cluster`
-- **Region**: `us-east-1`
-- **Node Group**: Ensure you have at least 2-3 nodes for HA
+```mermaid
+graph LR
+    A[✅ Checkout Code] --> B[✅ Build Docker Image]
+    B --> C[✅ Push to DockerHub]
+    C --> D[✅ Configure AWS/kubectl]
+    D --> E[✅ Deploy to Kubernetes]
+    E --> F[✅ Deploy Ingress]
+    F --> G[✅ Get Ingress URL]
 
-## Deployment Instructions
-
-### Step 1: Prepare Your Environment
-
-1. **Create EKS Cluster** (if not already created):
-```bash
-eksctl create cluster \
-  --name kastro-cluster \
-  --region us-east-1 \
-  --nodegroup-name standard-workers \
-  --node-type t3.medium \
-  --nodes 3 \
-  --nodes-min 1 \
-  --nodes-max 4 \
-  --managed
-```
-
-2. **Configure Jenkins Credentials**:
-   - Go to Jenkins → Manage Jenkins → Manage Credentials
-   - Add DockerHub credentials with ID: `dockerhub-creds`
-   - Add AWS credentials with ID: `aws-creds`
-
-### Step 2: Create Jenkins Pipeline
-
-1. **Create New Pipeline Job**:
-   - Go to Jenkins → New Item → Pipeline
-   - Name: `TechSolutions-EKS-Deployment`
-
-2. **Configure Pipeline**:
-   - Pipeline → Definition: Pipeline script from SCM
-   - SCM: Git
-   - Repository URL: Your Git repository URL
-   - Script Path: `Jenkinsfile`
-
-### Step 3: Run the Pipeline
-
-1. **Trigger the Pipeline**:
-   - Click "Build Now" on your pipeline job
-   - Monitor the build logs for progress
-
-2. **Pipeline Stages**:
-   - ✅ Checkout source code
-   - ✅ Build Docker image
-   - ✅ Push to DockerHub
-   - ✅ Configure AWS and kubectl
-   - ✅ Deploy to Kubernetes
-   - ✅ Install Nginx Ingress Controller
-   - ✅ Deploy Ingress
-   - ✅ Get Ingress URL
-
-### Step 4: Access Your Application
-
-After successful deployment, you'll see output like:
-
-```
-=========================================
-DEPLOYMENT SUCCESSFUL!
-=========================================
-Application URL: http://your-load-balancer-url.us-east-1.elb.amazonaws.com
-
-Available Paths:
-- Home Page: http://your-load-balancer-url.us-east-1.elb.amazonaws.com/
-- About Page: http://your-load-balancer-url.us-east-1.elb.amazonaws.com/about
-- Services Page: http://your-load-balancer-url.us-east-1.elb.amazonaws.com/services
-- Contact Page: http://your-load-balancer-url.us-east-1.elb.amazonaws.com/contact
-=========================================
-```
-
-
-## Scaling the Application
-
-```bash
-# Scale up replicas
-kubectl scale deployment techsolutions-deployment --replicas=5
-
-# Scale down replicas
-kubectl scale deployment techsolutions-deployment --replicas=2
-```
-
-## Clean Up
-
-To remove the deployment:
-
-```bash
-kubectl delete -f k8s/ingress.yaml
-kubectl delete -f k8s/deployment.yaml
-kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/aws/deploy.yaml
-```
-
-## Customization
-
-### Update Application
-1. Modify HTML/CSS files
-2. Commit changes to your repository
-3. Run the Jenkins pipeline again
-
-## Kastro Kiran V
