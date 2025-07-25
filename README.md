@@ -1,4 +1,4 @@
-# � Deployment of Microservices Application using Ingress Controller
+# 🚀 Deployment of Microservices Application using Ingress Controller
 
 ### by Kastro Kiran V
 
@@ -7,9 +7,35 @@
 ![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-This project contains a multi-page web application deployed on **AWS EKS** with **Ingress Controller** using **Jenkins CI/CD** pipeline.
+## 🎓 Join Our DevOps Training Program!
 
-## 🛠️ Tools Used
+**Batch 06 - Professional Certification in:**  
+**Jenkins | Docker | Kubernetes | Terraform | AWS**
+
+📅 **Starting Soon** | 🕒 8 Weeks Intensive Training | 👨‍💻 Hands-on Projects
+
+✨ **What You'll Learn:**
+- ✅ End-to-end CI/CD pipeline implementation
+- ✅ Containerization with Docker
+- ✅ Kubernetes orchestration on AWS EKS
+- ✅ Infrastructure as Code with Terraform
+- ✅ Monitoring with Prometheus & Grafana
+- ✅ GitOps with ArgoCD
+
+🔹 **Limited Seats Available!**  
+🔹 **Special Early Bird Pricing**  
+🔹 **Placement Assistance**
+
+📌 **Register Now:**  
+[![Register Button](https://img.shields.io/badge/REGISTER_NOW-%23007EC6.svg?style=for-the-badge&logo=google-forms&logoColor=white)](https://forms.gle/rr7CKbG7Wu4Zdoit7)
+
+---
+
+## 🛠️ Project Overview
+
+This project demonstrates a production-grade deployment of a multi-page web application on **AWS EKS** with **Ingress Controller** using a complete **Jenkins CI/CD** pipeline.
+
+## 🔧 Tools Used
 
 | Category        | Tools                                                                                      |
 |-----------------|-------------------------------------------------------------------------------------------|
@@ -19,35 +45,15 @@ This project contains a multi-page web application deployed on **AWS EKS** with 
 | Orchestration   | ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=flat&logo=kubernetes&logoColor=white) ![AWS EKS](https://img.shields.io/badge/AWS_EKS-%23FF9900.svg?style=flat&logo=amazon-aws&logoColor=white) |
 | Monitoring      | ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=Prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=flat&logo=grafana&logoColor=white) |
 | GitOps          | ![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=flat&logo=argo&logoColor=white) |
-| Package Manager | ![Helm](https://img.shields.io/badge/Helm-0F1689?style=flat&logo=helm&logoColor=white) |
 
-## 🌐 Application Paths
-
-The application provides the following endpoints:
-
-| Path          | Description                          |
-|---------------|--------------------------------------|
-| `/`           | 🏠 Landing page with overview        |
-| `/about`      | ℹ️ Company information and team      |
-| `/services`   | 🛠️ Detailed service offerings        |
-| `/contact`    | 📧 Contact information and form      |
-
-## 🔄 Pipeline Stages
+## 🌐 Application Architecture
 
 ```mermaid
-graph LR
-    A[✅ Checkout Code] --> B[✅ Build Docker Image]
-    B --> C[✅ Push to DockerHub]
-    C --> D[✅ Configure AWS/kubectl]
-    D --> E[✅ Deploy to Kubernetes]
-    E --> F[✅ Deploy Ingress]
-    F --> G[✅ Get Ingress URL]
-
-## ⚖️ Scaling the Application
-
-```mermaid
-# Scale up replicas
-kubectl scale deployment techsolutions-deployment --replicas=5
-
-# Scale down replicas
-kubectl scale deployment techsolutions-deployment --replicas=2
+graph TD
+    A[User] --> B[Ingress Controller]
+    B --> C[Service 1]
+    B --> D[Service 2]
+    B --> E[Service 3]
+    C --> F[Pod]
+    D --> G[Pod]
+    E --> H[Pod]
