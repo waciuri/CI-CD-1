@@ -46,17 +46,5 @@ This project demonstrates a production-grade deployment of a multi-page web appl
 | Monitoring      | ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=Prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=flat&logo=grafana&logoColor=white) |
 | GitOps          | ![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=flat&logo=argo&logoColor=white) |
 
-## 🌐 Application Architecture
-
-```mermaid
-graph TD
-    A[User] --> B[Ingress Controller]
-    B --> C[Service 1]
-    B --> D[Service 2]
-    B --> E[Service 3]
-    C --> F[Pod]
-    D --> G[Pod]
-    E --> H[Pod]
-
-**## 🌐 Project Video**
-
+## 🌐 Project Video
+https://youtu.be/3fhvnsNY5fc
