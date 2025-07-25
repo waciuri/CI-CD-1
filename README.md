@@ -43,3 +43,11 @@ graph LR
     E --> F[✅ Deploy Ingress]
     F --> G[✅ Get Ingress URL]
 
+## ⚖️ Scaling the Application
+
+```mermaid
+# Scale up replicas
+kubectl scale deployment techsolutions-deployment --replicas=5
+
+# Scale down replicas
+kubectl scale deployment techsolutions-deployment --replicas=2
