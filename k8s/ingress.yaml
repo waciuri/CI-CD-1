@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: techsolutions-ingress
   namespace: default
+    # annotations:
+    # kubernetes.io/ingress.class: "nginx"
+      # nginx.ingress.kubernetes.io/rewrite-target: /$1
+      # nginx.ingress.kubernetes.io/use-regex: "true"
+      # nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      # metadata:
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -18,7 +24,7 @@ spec:
   - host: techsolutions.yourdomain.com
     http:
       paths:
-      - path: /(.*)
+      - path: /
         pathType: Prefix
         backend:
           service:
@@ -27,7 +33,7 @@ spec:
               number: 80
   - http:
       paths:
-      - path: /(.*)
+      - path: /
         pathType: Prefix
         backend:
           service:
