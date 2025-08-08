@@ -16,12 +16,13 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
-    - techsolutions.yourdomain.com
+    - a289fd49bd80a4918bea08e465edcf76-c0dc7ee9f9cd4cf3.elb.us-east-1.amazonaws.com
     secretName: techsolutions-tls
   rules:
-  - host: techsolutions.yourdomain.com
+  - host: a289fd49bd80a4918bea08e465edcf76-c0dc7ee9f9cd4cf3.elb.us-east-1.amazonaws.com
     http:
       paths:
       - path: /
